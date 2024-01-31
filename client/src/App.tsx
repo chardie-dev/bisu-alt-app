@@ -1,14 +1,13 @@
-import { useState } from 'react'
 import './App.css'
-import { Button } from './components/ui/button'
+// import { Button } from './components/ui/button'
+import NavigationBar from './components/navigation'
+
 
 function App() {
   return (
-    <>
-      <div className='p-20'>
-        <Button>Hello ShadCN and Vite!</Button>
-      </div>
-    </>
+    <div className='font-inter'>
+      <NavigationBar isAuthenticated={false}/>
+    </div>
   )
 }
 
