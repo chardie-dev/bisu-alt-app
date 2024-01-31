@@ -6,7 +6,7 @@ type PageContainerProps = {
 
 const PageContainer: React.FC<PageContainerProps> = ({ children }) => {
   return (
-    <div className="container mx-auto mt-8 p-4">
+    <div className="container mx-auto p-5 md:p-[30px] lg:p-10 h-[calc(100%-80px)]">
       {children}
     </div>
   );
