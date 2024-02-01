@@ -1,29 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useBrowserWidth = (): number => {
-  // State to hold the window width
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
-  // Event handler to update window width on resize
-  const handleResize = () => {
+  const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
   };
 
-  // Effect to add and remove window resize event listener
   useEffect(() => {
-    // Set initial window width
-    setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleWindowResize);
 
-    // Add event listener on component mount
-    window.addEventListener('resize', handleResize);
-
-    // Remove event listener on component unmount
+    // Cleanup the event listener on unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleWindowResize);
     };
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []); // Empty dependency array ensures this effect runs only once
 
-  // Return the current window width
   return windowWidth;
 };
 

@@ -7,10 +7,12 @@ import LandingPage from '@/pages/landing'
 
 import PageContainer from '@/components/page-container'
 
-const AppRoutes: React.FC = () => {
+import useBackgroundColorByLocation from '@/hooks/useBackgroundColorByLocation'
 
+const AppRoutes: React.FC = () => {
+  const pageColor = useBackgroundColorByLocation()
   return (
-    <PageContainer>
+    <PageContainer pageColor={pageColor}>
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<AlumniLogin />} />

@@ -1,8 +1,18 @@
 import React from 'react'
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger, NavigationMenuContent } from '@/components/ui/navigation-menu'
-import Icon from '../icon'
+
+import { 
+  NavigationMenu, 
+  NavigationMenuList, 
+  NavigationMenuItem, 
+  NavigationMenuLink, 
+  NavigationMenuTrigger, 
+  NavigationMenuContent 
+} from '@/components/ui/navigation-menu'
+import Icon from '@/components/icon'
+
 import { colors } from '@/constants/colors'
 import useBrowserWidth from '@/hooks/useBrowserWidth'
+import useBackgroundColorByLocation from '@/hooks/useBackgroundColorByLocation'
 
 type NavigationBarProps = {
   isAuthenticated: boolean
@@ -10,9 +20,10 @@ type NavigationBarProps = {
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ isAuthenticated }) => {
   const browserWidth = useBrowserWidth()
+  const navColor = useBackgroundColorByLocation()
   
   return (
-    <div className='px-[20px] lg:px-[40px] md:px-[30px] sm:px-[20px] bg-tertiary-50 w-full max-w-full h-20 flex flex-row items-center justify-center grow drop-shadow-lg'>
+    <div className={'px-[20px] lg:px-[40px] md:px-[30px] sm:px-[20px] w-full max-w-full h-20 flex flex-row items-center justify-center grow drop-shadow-lg ' + navColor}>
       <div onClick={() => window.location.href = '/'} className='cursor-pointer'>
         <Icon
           color={colors.primary_500}

@@ -6,8 +6,8 @@ import { BrowserRouter } from 'react-router-dom'
 function App() {
   return (
     <div className='font-inter h-dvh'>
-      <NavigationBar isAuthenticated={false}/>
       <BrowserRouter>
+        <NavigationBar isAuthenticated={false}/>
         <AppRoutes />
       </BrowserRouter>
     </div>
