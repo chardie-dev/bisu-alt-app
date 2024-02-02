@@ -16,23 +16,28 @@ export const useBackgroundByLocation = (): IBackgroundConfig => {
   switch(location.pathname) {
     case '/director': {
       backgroundConfig.nav = 'bg-[#F5EBFF]',
-      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-primary.svg')]"
+      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-primary.svg')] h-[calc(100%-80px)]"
       break;
     }
     case '/login': {
       backgroundConfig.nav = 'bg-[#FFFCE8]',
-      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-secondary.svg')]"
+      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-secondary.svg')] h-[calc(100%-80px)]"
+      break;
+    }
+    case '/general-information-signup': {
+      backgroundConfig.nav = 'bg-neutral-100',
+      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-neutral.svg')]"
       break;
     }
     case '/':
     case '/home': {
       backgroundConfig.nav = 'bg-tertiary-50',
-      backgroundConfig.page = "bg-tertiary-50"
+      backgroundConfig.page = "bg-tertiary-50 h-[calc(100%-80px)]"
       break;
     }
     default: {
       backgroundConfig.nav = 'bg-white',
-      backgroundConfig.page = "bg-white"
+      backgroundConfig.page = "bg-white h-[calc(100%-80px)]"
       break;
     }
   }
