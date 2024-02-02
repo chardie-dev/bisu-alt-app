@@ -9,7 +9,6 @@ import useBrowserWidth from '@/hooks/useBrowserWidth'
 
 const LandingPage: React.FC<{}> = () => {
   const browserWidth = useBrowserWidth()
-  console.log({ browserWidth })
 
   return (
     <div className='bg-tertiary-50 w-full h-full flex lg:grid lg:grid-cols-[2fr_3fr] lg:grid-rows-[1fr] lg:gap-8 lg:grid-flow-row'>
