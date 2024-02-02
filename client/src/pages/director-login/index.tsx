@@ -17,12 +17,6 @@ const formSchema = z.object({
     message: "Your password must be at least 8 characters long."
   })
 })
-// .refine((data) => {
-//     // return data.password === data.passwordConfirm sample validation 
-// }, {
-//   // message: "Passwords do not match",
-//   // path: ["passwordConfirm"]
-// })
 
 const DirectorLogin: React.FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,12 +33,12 @@ const DirectorLogin: React.FC = () => {
   }
 
   return (
-    <div className="w-full h-full max-w-full max-h-full flex justify-center items-center">
-      <div className='bg-white h-fit w-[400px] rounded-2xl flex flex-col justify-center items-center p-5'>
-        <h2 className='font-bold text-2xl'>Director Login</h2>
-        <div className='text-xl'>Welcome back!</div>
+    <div className="w-full h-full max-w-full max-h-full flex justify-center items-start md:items-center">
+      <div className='bg-white h-full md:h-fit w-[400px] rounded-2xl flex flex-col justify-start md:justify-center items-start md:items-center p-5'>
+        <h2 className='font-bold text-3xl md:text-2xl'>Director Login</h2>
+        <div className='text-2xl md:text-xl'>Welcome back!</div>
         <Form {...form} >
-          <form onSubmit={form.handleSubmit(handleSubmit)} className='w-full max-w-full mt-4 flex flex-col gap-4'>
+          <form onSubmit={form.handleSubmit(handleSubmit)} className='w-full max-w-full flex flex-col gap-4 mt-auto md:mt-4'>
             <FormField control={form.control} name="campus" render={({ field }) => {
               return (
                 <FormItem>
@@ -91,7 +85,7 @@ const DirectorLogin: React.FC = () => {
                 </FormItem>
               )
             }}/>
-            <Button className='w-full mt-2' type='submit' >Submit</Button>
+            <Button className='w-full mt-2' type='submit' >Login</Button>
           </form>
         </Form>
       </div>

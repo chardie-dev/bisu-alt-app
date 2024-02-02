@@ -19,6 +19,11 @@ export const useBackgroundByLocation = (): IBackgroundConfig => {
       backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-primary.svg')]"
       break;
     }
+    case '/login': {
+      backgroundConfig.nav = 'bg-[#FFFCE8]',
+      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-secondary.svg')]"
+      break;
+    }
     case '/':
     case '/home': {
       backgroundConfig.nav = 'bg-tertiary-50',
