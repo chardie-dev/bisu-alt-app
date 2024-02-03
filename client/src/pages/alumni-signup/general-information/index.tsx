@@ -68,7 +68,7 @@ const formSchema = z.object({
   firstName: z.string().min(1, { message: "Please input your first name" }),
   middleName: z.string().optional(),
   lastName: z.string().min(1, { message: "Please input your last name" }),
-  permanentAddressProvince: z.enum(provinces_list_const),
+  permanentAddressProvince: z.enum(provinces_list_const), // to fix ztype and prefill default values or use nativeEnums for this
   permanentAddressCity: z.enum(cities_list_const),
   permanentAddressStreet: z.string().min(1, { message: "Please input your street address" }),  
   placeOfBirthProvince: z.enum(provinces_list_const),
@@ -114,6 +114,7 @@ const GeneralInformationSignup: React.FC = () => {
   
 
   const onSubmitHandler = (values: z.infer<typeof formSchema>) => {
+    // todo: remove console logs
     console.log({values})
     const {
       firstName,
@@ -345,6 +346,9 @@ const GeneralInformationSignup: React.FC = () => {
                     <FormControl>
                       <Input {...field} placeholder='Email' type='email'/>
                     </FormControl>
+                    <FormDescription>
+                      This will be used as your default username
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )
@@ -421,6 +425,7 @@ const GeneralInformationSignup: React.FC = () => {
               )
             }} />
             <FormField control={form.control} name="dateOfBirth" render={({ field }) => {
+              // todo: update this to an input only with type date, it's much better and more functional
               return (
                 <FormItem className="flex flex-col mt-2">
                   <FormLabel>Date of birth</FormLabel>
@@ -476,7 +481,7 @@ const GeneralInformationSignup: React.FC = () => {
                     <FormMessage />
                   </FormItem>
                 )
-              }}/>
+            }}/>
             <Button className='w-full mt-2' type='submit' >Next</Button>
           </form>
         </Form>

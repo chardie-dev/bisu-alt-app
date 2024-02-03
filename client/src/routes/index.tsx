@@ -8,6 +8,7 @@ import DirectorLogin from '@/pages/director-login'
 import LandingPage from '@/pages/landing'
 import GeneralInformationSignup from '@/pages/alumni-signup/general-information'
 import EducationalBackgroundSignup from '@/pages/alumni-signup/educational-background'
+import AdvancedStudiesSignup from '@/pages/alumni-signup/advanced-studies'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes: React.FC = () => {
         <Route path='/director' element={<DirectorLogin />} />
         <Route path='/general-information-signup' element={<GeneralInformationSignup />} />
         <Route path='/education-background-signup' element={<EducationalBackgroundSignup />} />
+        <Route path='/advanced-studies-signup' element={<AdvancedStudiesSignup />} />
       </Routes>
     </PageContainer>
   )

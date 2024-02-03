@@ -24,8 +24,23 @@ export type GeneralInformationType = {
   familyIncome: number
 }
 
+type ProfessionalExaminationType = {
+  nameOfExamination: string,
+  dateOfExamination: string,
+  rating: string,
+}
+
+export type EducationalBackgroundType = {
+  campus: string,
+  college: string,
+  program: string,
+  yearGraduated: number,
+  professionalExaminations?: Array<ProfessionalExaminationType>
+}
+
 type SignupState = {
-  generalInformation: GeneralInformationType
+  generalInformation: GeneralInformationType,
+  educationalBackground: EducationalBackgroundType
 }
 
 const initialState: SignupState = {
@@ -50,6 +65,13 @@ const initialState: SignupState = {
     sex: "",
     dateOfBirth: "",
     familyIncome: 0
+  },
+  educationalBackground: {
+    campus: "",
+    college: "",
+    program: "",
+    yearGraduated: 0,
+    professionalExaminations: []
   }
 }
 
@@ -57,11 +79,19 @@ const signupSlice = createSlice({
   name: "signup",
   initialState,
   reducers: {
-    saveGeneralInformation (state, action: PayloadAction<GeneralInformationType>) {
+    saveGeneralInformation(state, action: PayloadAction<GeneralInformationType>) {
       const { payload } = action
       state = {
         ...state,
         generalInformation: payload
+      }
+      return state
+    },
+    saveEducationalBackground(state, action: PayloadAction<EducationalBackgroundType>) {
+      const { payload } = action
+      state = {
+        ...state,
+        educationalBackground: payload
       }
       return state
     },
@@ -73,5 +103,5 @@ const signupSlice = createSlice({
 })
 
 export const signupSelector = (state: RootState) => state.signupData
-export const { saveGeneralInformation, clearSignupData } = signupSlice.actions
+export const { saveGeneralInformation, saveEducationalBackground, clearSignupData } = signupSlice.actions
 export const signupReducer = signupSlice.reducer
