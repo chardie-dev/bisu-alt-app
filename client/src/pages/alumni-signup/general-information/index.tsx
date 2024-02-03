@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -52,7 +52,13 @@ import {
   sex_list,
   sex_list_const
 } from '@/constants/sex'
+
 import { useNavigate } from 'react-router'
+
+import { GeneralInformationType, saveGeneralInformation, signupSelector } from '@/features/signupSlice'
+
+import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { useAppSelector } from '@/hooks/useAppSelector'
 
 const phoneRegex = new RegExp(
   /^(09|\+639)\d{9}$/
@@ -94,15 +100,64 @@ const formDefaultValues = {
 
 const GeneralInformationSignup: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const signupState = useAppSelector(signupSelector)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: formDefaultValues
   })
 
+  useEffect(() => {
+    console.log({ genInfo: signupState.generalInformation })
+  }, [signupState.generalInformation])
+  
+
   const onSubmitHandler = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+    console.log({values})
+    const {
+      firstName,
+      middleName,
+      lastName,
+      permanentAddressProvince,
+      permanentAddressCity,
+      permanentAddressStreet,
+      placeOfBirthProvince,
+      placeOfBirthCity,
+      emailAddress,
+      mobileNumber,
+      civilStatus,
+      sex,
+      dateOfBirth,
+      familyIncome
+    } = values
+
+    const __generalInformation: GeneralInformationType  = {
+      name: {
+        first: firstName,
+        middle: middleName,
+        last: lastName
+      },
+      permanentAddress: {
+        province: permanentAddressProvince,
+        city: permanentAddressCity,
+        street: permanentAddressStreet
+      },
+      placeOfBirth: {
+        province: placeOfBirthProvince,
+        city: placeOfBirthCity
+      },
+      email: emailAddress,
+      mobileNumber: mobileNumber,
+      civilStatus: civilStatus,
+      sex: sex,
+      dateOfBirth: format(dateOfBirth, 'P'),
+      familyIncome: familyIncome
+    }
+    console.log(__generalInformation)
+    dispatch(saveGeneralInformation(__generalInformation))
+
     navigate('/education-background-signup')
-    // use city and province_list here to check the actual object to push in redux and db 
   }
   const selectedPermanentAddressProvince = form.watch("permanentAddressProvince")
   const selectedPermanentAddressCity = form.watch("permanentAddressCity")
@@ -380,7 +435,7 @@ const GeneralInformationSignup: React.FC = () => {
                           )}
                         >
                           {field.value ? (
-                            format(field.value, "PPP")
+                            format(field.value, "PP")
                           ) : (
                             <span>Pick a date</span>
                           )}
