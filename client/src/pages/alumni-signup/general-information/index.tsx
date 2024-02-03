@@ -75,26 +75,28 @@ const formSchema = z.object({
   familyIncome: z.number().min(1, { message: "Please input your family income" })
 })
 
+const formDefaultValues = {
+  firstName: "",
+  middleName: "",
+  lastName: "",
+  permanentAddressProvince: undefined,
+  permanentAddressCity: undefined,
+  permanentAddressStreet: "",
+  placeOfBirthProvince: undefined,
+  placeOfBirthCity: undefined,
+  emailAddress: "",
+  mobileNumber: "",
+  civilStatus: undefined,
+  sex: undefined,
+  dateOfBirth: new Date(),
+  familyIncome: 0
+}
+
 const GeneralInformationSignup: React.FC = () => {
   const navigate = useNavigate()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      permanentAddressProvince: undefined,
-      permanentAddressCity: undefined,
-      permanentAddressStreet: "",
-      placeOfBirthProvince: undefined,
-      placeOfBirthCity: undefined,
-      emailAddress: "",
-      mobileNumber: "",
-      civilStatus: undefined,
-      sex: undefined,
-      dateOfBirth: new Date(),
-      familyIncome: 0
-    }
+    defaultValues: formDefaultValues
   })
 
   const onSubmitHandler = (values: z.infer<typeof formSchema>) => {

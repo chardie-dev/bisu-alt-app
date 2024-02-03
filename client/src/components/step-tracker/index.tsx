@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../icon';
+import { CheckIcon } from 'lucide-react';
 
 type StepTrackerProps = {
   currentStep: number,
@@ -16,12 +16,12 @@ const StepTracker: React.FC<StepTrackerProps> = ({ currentStep, totalSteps }) =>
             <div
               key={`step-${index}`}
               className={`flex text-center items-center justify-center w-8 h-8 rounded-full ${
-                index + 1 <= currentStep ? 'bg-primary-300 text-white font-bold' : 'bg-gray-300 text-gray-500'
+                index + 1 < currentStep ? 'bg-success-300 text-white font-bold' : index + 1 === currentStep ? 'bg-primary-300 text-white font-bold' : 'bg-gray-300 text-gray-500'
               }`}
             >
               {
                 index + 1 < currentStep 
-                ? <Icon key={`check-${index}`} icon='check' color='#FFFFFF' style={{ width: '24px', height: '24px' }} />
+                ? <CheckIcon className="h-6 w-6" />
                 : <span>{index + 1}</span>
               }
               
