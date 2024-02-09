@@ -24,12 +24,20 @@ export const useBackgroundByLocation = (): IBackgroundConfig => {
       backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-secondary.svg')] h-[calc(100%-80px)]"
       break;
     }
-    case '/education-background-signup':
-    case '/general-information-signup': {
+    case '/signup/general-information': 
+    case '/signup/educational-background':
+    case '/signup/advanced-studies': 
+    case '/signup/job-placement-profile': {
       backgroundConfig.nav = 'bg-neutral-100',
-      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-neutral.svg')]"
+      backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-neutral.svg')] min-h-[calc(100%-80px)]"
       break;
     }
+    // case '/education-background-signup':
+    // case '/general-information-signup': {
+    //   backgroundConfig.nav = 'bg-neutral-100',
+    //   backgroundConfig.page = "bg-[url('@/assets/images/topo-contour-bg-neutral.svg')]"
+    //   break;
+    // }
     case '/':
     case '/home': {
       backgroundConfig.nav = 'bg-tertiary-50',

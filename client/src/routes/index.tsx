@@ -9,6 +9,7 @@ import LandingPage from '@/pages/landing'
 import GeneralInformationSignup from '@/pages/alumni-signup/general-information'
 import EducationalBackgroundSignup from '@/pages/alumni-signup/educational-background'
 import AdvancedStudiesSignup from '@/pages/alumni-signup/advanced-studies'
+import JobPlacementProfileSignup from '@/pages/alumni-signup/job-placement-profile'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -17,9 +18,10 @@ const AppRoutes: React.FC = () => {
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<AlumniLogin />} />
         <Route path='/director' element={<DirectorLogin />} />
-        <Route path='/general-information-signup' element={<GeneralInformationSignup />} />
-        <Route path='/education-background-signup' element={<EducationalBackgroundSignup />} />
-        <Route path='/advanced-studies-signup' element={<AdvancedStudiesSignup />} />
+        <Route path='/signup/general-information' element={<GeneralInformationSignup />} />
+        <Route path='/signup/educational-background' element={<EducationalBackgroundSignup />} />
+        <Route path='/signup/advanced-studies' element={<AdvancedStudiesSignup />} />
+        <Route path='/signup/job-placement-profile' element={<JobPlacementProfileSignup />} />
       </Routes>
     </PageContainer>
   )

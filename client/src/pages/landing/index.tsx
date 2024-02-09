@@ -18,7 +18,7 @@ const LandingPage: React.FC<{}> = () => {
           <div className='text-2xl leading-[32px] text-black my-3'>
             Connect. Grow. Succeed. Our Alumni Tracker app bridges personal connections and professional opportunities, empowering alumni to thrive.
           </div>
-          <Button onClick={() => window.location.href = '/general-information-signup'} className='w-full lg:w-fit' size='lg'>Sign up here</Button>
+          <Button onClick={() => window.location.href = '/signup/general-information'} className='w-full lg:w-fit' size='lg'>Sign up here</Button>
         </div>
       </div>
       <>

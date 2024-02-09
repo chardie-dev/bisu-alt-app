@@ -158,7 +158,7 @@ const GeneralInformationSignup: React.FC = () => {
     console.log(__generalInformation)
     dispatch(saveGeneralInformation(__generalInformation))
 
-    navigate('/education-background-signup')
+    navigate('/signup/educational-background')
   }
   const selectedPermanentAddressProvince = form.watch("permanentAddressProvince")
   const selectedPermanentAddressCity = form.watch("permanentAddressCity")

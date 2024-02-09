@@ -62,6 +62,7 @@ const formDefaultValues = {
 const EducationalBackgroundSignup: React.FC = () => {
   // todo: prefill data from root state if edit from next page
   const signupData = useAppSelector(signupSelector)
+  console.log({ signupData })
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -93,7 +94,7 @@ const EducationalBackgroundSignup: React.FC = () => {
       professionalExaminations
     }
     dispatch(saveEducationalBackground(__educationalBackgroundObj))
-    navigate('/advanced-studies-signup')
+    navigate('/signup/advanced-studies')
   }
 
   const selectedCampus = form.watch("campus")
@@ -124,7 +125,7 @@ const EducationalBackgroundSignup: React.FC = () => {
         <div className='w-full max-w-full flex justify-center' >
           <StepTracker currentStep={2} totalSteps={4} />
         </div>
-        <h2 className='font-bold text-3xl md:text-2xl mt-3'>General Information</h2>
+        <h2 className='font-bold text-3xl md:text-2xl mt-3'>Educational Background</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmitHandler)} className='w-full max-w-full flex flex-col gap-4 mt-auto md:mt-4'>
             <FormField control={form.control} name="campus" render={({ field }) => {
@@ -256,7 +257,7 @@ const EducationalBackgroundSignup: React.FC = () => {
                       nameOfExamination={_p.nameOfExamination} 
                       dateOfExamination={_p.dateOfExamination} 
                       rating={_p.rating}
-                      onClickHandler={(e: React.FormEvent<HTMLElement>) => {
+                      onDeleteClickHandler={(e: React.FormEvent<HTMLElement>) => {
                         e.preventDefault()
                         onDeleteExaminationHandler(_p)
                       }} 

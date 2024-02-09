@@ -10,20 +10,20 @@ type ProfessionalExaminationCardType= {
   nameOfExamination: string,
   dateOfExamination: string,
   rating: string,
-  onClickHandler: (e: React.FormEvent<HTMLElement>) => void
+  onDeleteClickHandler: (e: React.FormEvent<HTMLElement>) => void
 }
 
-const ProfessionalExaminationCard: React.FC<ProfessionalExaminationCardType> = ({ nameOfExamination, dateOfExamination, rating, onClickHandler }) => {
+const ProfessionalExaminationCard: React.FC<ProfessionalExaminationCardType> = ({ nameOfExamination, dateOfExamination, rating, onDeleteClickHandler }) => {
   return (
     <div className='w-full'>
       <Card>
         <CardContent className='flex flex-row items-start mt-4'>
           <div>
-            <p>{nameOfExamination}</p>
-            <p>{dateOfExamination}</p>
-            <p>{rating}</p>
+            <p className='text-sm font-medium'>{nameOfExamination}</p>
+            <p className='text-sm'>{dateOfExamination}</p>
+            <p className='text-sm'>{rating}</p>
           </div>
-          <Button className='ml-auto bg-error-300 hover:bg-error-700' onClick={onClickHandler} size='sm'>
+          <Button className='ml-auto bg-error-300 hover:bg-error-700' onClick={onDeleteClickHandler} size='sm'>
             <Trash2/>
           </Button>
         </CardContent>
