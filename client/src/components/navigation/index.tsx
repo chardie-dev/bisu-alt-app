@@ -27,25 +27,25 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isAuthenticated }) => {
       <div onClick={() => window.location.href = '/'} className='cursor-pointer'>
         <Icon
           color={colors.primary_500}
-          style={{ 
+          style={{ //  mt-2 
             width: browserWidth <= 640 ? '64px' : '258px',
             height: '64px'
           }}
           icon={browserWidth <= 640 ? 'logo' : 'logo-wide'}
         />
       </div>
-      <NavigationMenu className='ml-auto'>
-        <NavigationMenuList>
+      <NavigationMenu className='ml-auto'> 
+        <NavigationMenuList className='rounded-none'>
           <NavigationMenuItem className='flex flex-col items-end'>      
             <NavigationMenuTrigger className="bg-primary-500 text-white focus:bg-primary-700 focus:text-white hover:bg-primary-700 hover:text-white px-6 py-3">
               {isAuthenticated ? 'Logout' : 'Login'}
             </NavigationMenuTrigger>
-            <NavigationMenuContent className='rounded-none'>
-              <ul className='flex flex-col items-start w-32 bg-neutral-100 rounded-none'>
-                <li className='w-full rounded-none' >
+            <NavigationMenuContent className='rounded-none r-0'>
+              <ul className='flex flex-col items-start w-32 rounded-none'>
+                <li className='w-full rounded-none hover:bg-primary-300 hover:text-white p-2 ' >
                   <NavigationMenuLink className='rounded-none' href="/login">Alumni Login</NavigationMenuLink>
                 </li>
-                <li className='w-full mt-2 pt-2 border-t-2 border-t-neutral-400 rounded-none'>
+                <li className='w-full rounded-none hover:bg-primary-300 hover:text-white p-2 border-t-2 border-t-neutral-400'>
                   <NavigationMenuLink className='rounded-none' href="/director">Director Login</NavigationMenuLink>
                 </li>
               </ul>
